@@ -4,6 +4,11 @@
 
 /* Server Tracker Design System - Modern tech aesthetic with blue/cyan theme */
 
+body {
+  overflow-x: hidden;
+}
+
+
 @layer base {
   :root {
     --background: 217 33% 6%;
