@@ -33,9 +33,9 @@ export function ServerMap({ servers }: ServerMapProps) {
       const map = new mapboxgl.Map({
         container: mapContainer.current,
         style: 'mapbox://styles/mapbox/dark-v11',
-        center: [0, 20],
-        zoom: 2,
-        projection: 'globe' as any
+        center: [77.5946, 20.5937], // Center on India
+        zoom: 4.5,
+        projection: 'mercator' as any
       });
 
       // Add navigation controls
