@@ -1,7 +1,7 @@
 export const mockServers = [
   {
     id: '1',
-    name: 'MH-Mumbai-1',
+    name: 'Mumbai-Central-1',
     ip: '103.234.45.67',
     location: 'Mumbai, Maharashtra',
     coordinates: [72.8777, 19.0760] as [number, number],
@@ -12,9 +12,9 @@ export const mockServers = [
   },
   {
     id: '2',
-    name: 'DL-Delhi-1',
+    name: 'Delhi-NCR-1',
     ip: '103.198.76.43',
-    location: 'New Delhi, Delhi',
+    location: 'New Delhi, National Capital Territory',
     coordinates: [77.2090, 28.6139] as [number, number],
     status: 'online' as const,
     uptime: '99.8%',
@@ -23,9 +23,9 @@ export const mockServers = [
   },
   {
     id: '3',
-    name: 'KA-Bangalore-1',
+    name: 'Bengaluru-Tech-1',
     ip: '103.134.567.89',
-    location: 'Bangalore, Karnataka',
+    location: 'Bengaluru, Karnataka',
     coordinates: [77.5946, 12.9716] as [number, number],
     status: 'warning' as const,
     uptime: '97.2%',
@@ -34,7 +34,7 @@ export const mockServers = [
   },
   {
     id: '4',
-    name: 'TN-Chennai-1',
+    name: 'Chennai-Bay-1',
     ip: '103.245.123.98',
     location: 'Chennai, Tamil Nadu',
     coordinates: [80.2707, 13.0827] as [number, number],
@@ -45,7 +45,7 @@ export const mockServers = [
   },
   {
     id: '5',
-    name: 'WB-Kolkata-1',
+    name: 'Kolkata-East-1',
     ip: '103.162.45.123',
     location: 'Kolkata, West Bengal',
     coordinates: [88.3639, 22.5726] as [number, number],
@@ -56,10 +56,10 @@ export const mockServers = [
   },
   {
     id: '6',
-    name: 'RJ-Jaipur-1',
+    name: 'Hyderabad-Tech-1',
     ip: '103.57.234.167',
-    location: 'Jaipur, Rajasthan',
-    coordinates: [75.7873, 26.9124] as [number, number],
+    location: 'Hyderabad, Telangana',
+    coordinates: [78.4867, 17.3850] as [number, number],
     status: 'online' as const,
     uptime: '99.6%',
     responseTime: 41,
@@ -67,10 +67,10 @@ export const mockServers = [
   },
   {
     id: '7',
-    name: 'GJ-Ahmedabad-1',
+    name: 'Pune-West-1',
     ip: '103.87.156.234',
-    location: 'Ahmedabad, Gujarat',
-    coordinates: [72.5714, 23.0225] as [number, number],
+    location: 'Pune, Maharashtra',
+    coordinates: [73.8567, 18.5204] as [number, number],
     status: 'online' as const,
     uptime: '99.4%',
     responseTime: 52,
@@ -78,14 +78,36 @@ export const mockServers = [
   },
   {
     id: '8',
-    name: 'PB-Chandigarh-1',
+    name: 'Ahmedabad-Guj-1',
     ip: '103.94.87.156',
-    location: 'Chandigarh, Punjab',
-    coordinates: [76.7794, 30.7333] as [number, number],
+    location: 'Ahmedabad, Gujarat',
+    coordinates: [72.5714, 23.0225] as [number, number],
     status: 'online' as const,
     uptime: '99.2%',
     responseTime: 38,
     lastChecked: '1 min ago'
+  },
+  {
+    id: '9',
+    name: 'Kochi-South-1',
+    ip: '103.175.89.234',
+    location: 'Kochi, Kerala',
+    coordinates: [76.2673, 9.9312] as [number, number],
+    status: 'online' as const,
+    uptime: '99.5%',
+    responseTime: 47,
+    lastChecked: '1 min ago'
+  },
+  {
+    id: '10',
+    name: 'Jaipur-Pink-1',
+    ip: '103.123.78.145',
+    location: 'Jaipur, Rajasthan',
+    coordinates: [75.7873, 26.9124] as [number, number],
+    status: 'online' as const,
+    uptime: '99.3%',
+    responseTime: 39,
+    lastChecked: '2 min ago'
   }
 ];
 
