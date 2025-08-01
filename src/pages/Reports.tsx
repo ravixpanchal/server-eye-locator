@@ -2,11 +2,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Download, FileText, Calendar, Filter } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
 
 export default function Reports() {
-  const { toast } = useToast();
-  
   const reports = [
     { id: 1, name: "Server Performance Report", type: "Performance", date: "2024-01-15", status: "completed", size: "2.3 MB" },
     { id: 2, name: "Security Audit Report", type: "Security", date: "2024-01-14", status: "processing", size: "1.8 MB" },
@@ -14,36 +11,6 @@ export default function Reports() {
     { id: 4, name: "Uptime Summary Report", type: "Uptime", date: "2024-01-12", status: "completed", size: "892 KB" },
     { id: 5, name: "Resource Usage Report", type: "Resources", date: "2024-01-11", status: "failed", size: "N/A" },
   ];
-
-  const downloadReport = (report: typeof reports[0]) => {
-    // Create a mock file content
-    const fileContent = `${report.name}
-Generated on: ${report.date}
-Type: ${report.type}
-Status: ${report.status}
-Size: ${report.size}
-
---- Report Summary ---
-This is a sample ${report.type.toLowerCase()} report for demonstration purposes.
-Server monitoring data and analytics would be included here.
-    `;
-    
-    // Create blob and download
-    const blob = new Blob([fileContent], { type: 'text/plain' });
-    const url = window.URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `${report.name.replace(/\s+/g, '_')}.txt`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    window.URL.revokeObjectURL(url);
-    
-    toast({
-      title: "Download Started",
-      description: `${report.name} is being downloaded.`,
-    });
-  };
 
   const getStatusBadge = (status: string) => {
     switch (status) {
@@ -153,7 +120,7 @@ Server monitoring data and analytics would be included here.
                 <div className="flex items-center gap-2">
                   {getStatusBadge(report.status)}
                   {report.status === "completed" && (
-                    <Button variant="outline" size="sm" onClick={() => downloadReport(report)}>
+                    <Button variant="outline" size="sm">
                       <Download className="mr-2 h-4 w-4" />
                       Download
                     </Button>

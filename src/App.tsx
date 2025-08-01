@@ -5,8 +5,6 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AppSidebar } from "@/components/AppSidebar";
-import { ThemeProvider } from "@/components/ThemeProvider";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import Dashboard from "./pages/Dashboard";
 import MapView from "./pages/MapView";
 import Analytics from "./pages/Analytics";
@@ -20,25 +18,21 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider defaultTheme="dark" storageKey="server-tracker-theme">
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <SidebarProvider>
-            <div className="min-h-screen flex w-full bg-background">
-              <AppSidebar />
-              <div className="flex-1 flex flex-col">
-                <header className="h-14 flex items-center justify-between border-b border-border px-4">
-                  <div className="flex items-center gap-4">
-                    <SidebarTrigger className="mr-4" />
-                    <div className="flex items-center gap-2">
-                      <div className="h-2 w-2 rounded-full bg-success pulse-online" />
-                      <span className="text-sm text-muted-foreground">Live monitoring active</span>
-                    </div>
-                  </div>
-                  <ThemeToggle />
-                </header>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <SidebarProvider>
+          <div className="min-h-screen flex w-full bg-background">
+            <AppSidebar />
+            <div className="flex-1 flex flex-col">
+              <header className="h-14 flex items-center border-b border-border px-4">
+                <SidebarTrigger className="mr-4" />
+                <div className="flex items-center gap-2">
+                  <div className="h-2 w-2 rounded-full bg-success pulse-online" />
+                  <span className="text-sm text-muted-foreground">Live monitoring active</span>
+                </div>
+              </header>
               <main className="flex-1 p-6 overflow-auto">
                 <Routes>
                   <Route path="/" element={<Dashboard />} />
@@ -51,12 +45,11 @@ const App = () => (
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>
-              </div>
             </div>
-          </SidebarProvider>
+          </div>
+        </SidebarProvider>
       </BrowserRouter>
     </TooltipProvider>
-    </ThemeProvider>
   </QueryClientProvider>
 );
 

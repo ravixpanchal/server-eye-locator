@@ -1,10 +1,5 @@
 import type { Config } from "tailwindcss";
 
-body {
-  overflow-x: hidden;
-}
-
-
 export default {
 	darkMode: ["class"],
 	content: [

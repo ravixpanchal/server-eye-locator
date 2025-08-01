@@ -2,34 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Server Tracker Design System - Modern tech aesthetic with blue/cyan theme */
+
 @layer base {
   :root {
     --background: 217 33% 6%;
     --foreground: 210 40% 98%;
+
     --card: 220 13% 9%;
     --card-foreground: 210 40% 98%;
+
     --popover: 220 13% 9%;
     --popover-foreground: 210 40% 98%;
+
     --primary: 195 100% 50%;
     --primary-foreground: 220 13% 9%;
+
     --secondary: 215 28% 17%;
     --secondary-foreground: 210 40% 98%;
+
     --muted: 215 28% 17%;
     --muted-foreground: 215 20% 65%;
+
     --accent: 193 95% 68%;
     --accent-foreground: 220 13% 9%;
+
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
+
     --border: 215 28% 17%;
     --input: 215 28% 17%;
     --ring: 195 100% 50%;
+
     --radius: 0.75rem;
+
+    /* Server Status Colors */
     --success: 142 71% 45%;
     --success-foreground: 210 40% 98%;
     --warning: 38 92% 50%;
     --warning-foreground: 220 13% 9%;
     --error: 0 84% 60%;
     --error-foreground: 210 40% 98%;
+
+    /* Tech Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(195 100% 50%), hsl(193 95% 68%));
+    --gradient-secondary: linear-gradient(135deg, hsl(215 28% 17%), hsl(220 13% 9%));
+    --gradient-success: linear-gradient(135deg, hsl(142 71% 45%), hsl(158 64% 52%));
+    --gradient-warning: linear-gradient(135deg, hsl(38 92% 50%), hsl(45 93% 47%));
+    --gradient-error: linear-gradient(135deg, hsl(0 84% 60%), hsl(354 84% 57%));
+
+    /* Shadows & Effects */
+    --shadow-card: 0 4px 20px hsl(195 100% 50% / 0.1);
+    --shadow-primary: 0 0 30px hsl(195 100% 50% / 0.3);
+    --shadow-success: 0 0 20px hsl(142 71% 45% / 0.2);
+    --shadow-error: 0 0 20px hsl(0 84% 60% / 0.2);
+
+    /* Animations */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+
     --sidebar-background: 220 13% 9%;
     --sidebar-foreground: 210 40% 98%;
     --sidebar-primary: 195 100% 50%;
@@ -45,42 +76,90 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    overflow-x: hidden;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/50 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary;
   }
 }
 
 @layer components {
+  /* Server Status Indicators */
   .status-online {
-    @apply bg-gradient-to-r from-green-500 to-green-400 text-white;
+    @apply bg-gradient-to-r from-green-500 to-green-400 text-white shadow-success;
   }
+
   .status-offline {
-    @apply bg-gradient-to-r from-red-500 to-red-400 text-white;
+    @apply bg-gradient-to-r from-red-500 to-red-400 text-white shadow-error;
   }
+
   .status-warning {
-    @apply bg-gradient-to-r from-yellow-500 to-yellow-400 text-black;
+    @apply bg-gradient-to-r from-yellow-500 to-yellow-400 text-black shadow-warning;
   }
+
+  /* Card variants */
+  .card-glow {
+    @apply shadow-card backdrop-blur-sm;
+  }
+
+  .card-glow:hover {
+    @apply shadow-primary transform scale-[1.02] transition-all duration-300;
+  }
+
+  /* Button variants */
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-primary;
+  }
+
+  .btn-success {
+    @apply bg-gradient-to-r from-green-500 to-green-400 text-white shadow-success;
+  }
+
+  .btn-error {
+    @apply bg-gradient-to-r from-red-500 to-red-400 text-white shadow-error;
+  }
+
+  /* Pulse animation for live status */
   .pulse-online {
     animation: pulse-green 2s infinite;
   }
+
   .pulse-offline {
     animation: pulse-red 2s infinite;
   }
+
   @keyframes pulse-green {
-    0%, 100% { 
-      box-shadow: 0 0 5px hsl(142 71% 45% / 0.4); 
-    }
-    50% { 
-      box-shadow: 0 0 20px hsl(142 71% 45% / 0.8); 
-    }
+    0%, 100% { box-shadow: 0 0 5px hsl(142 71% 45% / 0.4); }
+    50% { box-shadow: 0 0 20px hsl(142 71% 45% / 0.8); }
   }
+
   @keyframes pulse-red {
-    0%, 100% { 
-      box-shadow: 0 0 5px hsl(0 84% 60% / 0.4); 
-    }
-    50% { 
-      box-shadow: 0 0 20px hsl(0 84% 60% / 0.8); 
-    }
+    0%, 100% { box-shadow: 0 0 5px hsl(0 84% 60% / 0.4); }
+    50% { box-shadow: 0 0 20px hsl(0 84% 60% / 0.8); }
+  }
+
+  /* Map styles */
+  .mapboxgl-popup-content {
+    @apply bg-card text-card-foreground rounded-lg border border-border shadow-lg;
+  }
+
+  .mapboxgl-popup-tip {
+    @apply border-t-card;
   }
 }
